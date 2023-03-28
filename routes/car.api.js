@@ -1,5 +1,5 @@
 const express = require('express');
-const { createCar, getCars, editCar, deleteCar } = require('../controllers/car.controller');
+const {  getCars, createCar, editCar, deleteCar } = require('../controllers/car.controller');
 const router = express.Router();
 
 // CREATE
@@ -11,7 +11,7 @@ router.get('/', getCars);
 // UPDATE
 router.put('/:id', editCar);
 
-// // DELETE
+// // // DELETE
 router.delete('/:id', deleteCar);
 
 module.exports = router;

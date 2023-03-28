@@ -14,7 +14,7 @@ const carSchema = new mongoose.Schema(
 			min: 1900,
 			required: true,
 		},
-		transmission_type: {
+        transmission_type: {
 			type: String,
 			enum: ['MANUAL', 'AUTOMATIC', 'AUTOMATED_MANUAL', 'DIRECT_DRIVE', 'UNKNOWN'],
 			required: true,
@@ -39,21 +39,21 @@ const carSchema = new mongoose.Schema(
 	}
 );
 
-carSchema.pre(/^find/, function (next) {
-	if (!('_conditions' in this)) return next();
-	if (!('isDeleted' in carSchema.paths)) {
-		delete this['_conditions']['all'];
-		return next();
-	}
-	if (!('all' in this['_conditions'])) {
-		//@ts-ignore
-		this['_conditions'].isDeleted = false;
-	} else {
-		delete this['_conditions']['all'];
-	}
-	next();
-});
+// carSchema.pre(/^find/, function (next) {
+// 	if (!('_conditions' in this)) return next();
+// 	if (!('isDeleted' in carSchema.paths)) {
+// 		delete this['_conditions']['all'];
+// 		return next();
+// 	}
+// 	if (!('all' in this['_conditions'])) {
+// 		//@ts-ignore
+// 		this['_conditions'].isDeleted = false;
+// 	} else {
+// 		delete this['_conditions']['all'];
+// 	}
+// 	next();
+// });
 
-const Car = mongoose.model('Car', carSchema);
+const Car = mongoose.model('cars', carSchema);
 
 module.exports = Car;
